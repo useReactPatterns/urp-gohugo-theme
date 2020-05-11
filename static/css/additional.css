@@ -1,3 +1,8 @@
+
+:root {
+    --main-color: #1190cb;
+    --darker-color: #0d74a3
+}
 .index-title{
     color: rgba(0,0,0,.84);
     margin-top:20px;
@@ -10,8 +15,12 @@
     margin-top:20px;
     color: rgba(0,0,0,.44);
 }
+.index-recent {
+    margin: 4em 0;
+}
 .index-image{
-    width: 400px;
+    width: 200px;
+    margin-bottom: 1em;
 }
 .social-icon{
     color: rgba(0,0,0,.44);
@@ -21,7 +30,7 @@
     margin-left: 25px;
 }
 .jumbotron.fortags a {
-    background: #1C9963 !important;
+    background: var(--main-color);
 }
 .error{
     text-align: center !important;

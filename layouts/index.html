@@ -6,26 +6,33 @@
     <div class="main-content">
         <header class="text-center">
             {{ with .Site.Params.index.picture }}
-                <img src="{{ . | urlize | relURL }}" class="rounded-circle text-center index-image">
+                <img src="{{ . | urlize | relURL }}" class="text-center index-image">
             {{ end }}
             <h1 class="index-title">{{ .Site.Params.index.title }}</h1>
         </header>
 
-        <section class="text-center">
+        <section class="text-center index-title">
             {{ with .Site.Params.index.subtitle }}
             <h3 class="index-sub">{{ . }}</h3>
             {{ end }}
-            {{ with .Site.Params.index.mdtext }}
-            <h6 class="index-text">{{ . | markdownify }}</h6>
+        </section>
+
+        <section class="index-recent">
+            {{ with .Site.Params.index.recent }}
+            <h4 class="index-sub">{{ . }}</h4>
             {{ end }}
+
+            <div class="row listrecent">
+                {{ with .Site.GetPage "section" "blog" }}
+                    {{ $post_paginator := .Paginate (.Pages.ByWeight) 3 }}
+                    {{ range $post_paginator.Pages }}
+                        {{- partial "list-partials/postbox.html" . -}}
+                    {{ end }}
+                {{ end }}
+            </div>
         </section>
     </div>
     {{- partial "_shared/social.html" . -}}
-    {{ if isset .Site.Params.index "alertbar" }}
-    	{{ if .Site.Params.index.alertbar }}
-            {{- partial "_shared/alertbar.html" . -}}
-        {{ end }}
-    {{ end }}
 {{end}}
 
 {{ define "footer" }}

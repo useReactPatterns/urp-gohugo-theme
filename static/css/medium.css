@@ -7,13 +7,17 @@ License: https://www.wowthemes.net/freebies-license/
     padding: 1rem 0rem;
 }
 
+:root {
+    --main-color: #1190cb;
+    --darker-color: #0d74a3
+}
 a {
-    color: #00ab6b;
+    color: var(--main-color);
     transition: all 0.2s;
 }
 
 a:hover {
-    color: #038252;
+    color: var(--darker-color);
     text-decoration: none;
 }
 
@@ -114,7 +118,20 @@ section.recent-posts {
 
 .maxthumb {
     max-height: 300px;
+    width: 100%;
+    padding-bottom: 60%;
+    position: relative;
     overflow: hidden;
+}
+
+.maxthumb img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
 }
 
 .listfeaturedtag .card,
@@ -360,6 +377,7 @@ blockquote {
 .share ul li {
     display: inline-block;
     margin-bottom: 9px;
+    transition: color .3s ease;
 }
 
 .share ul {
@@ -374,6 +392,10 @@ blockquote {
     line-height: 30px;
     text-align: center;
     border-radius: 50%;
+}
+
+.share ul li a:hover {
+    color: --main-color;
 }
 
 .svgIcon {
@@ -469,8 +491,15 @@ blockquote {
 
 .share,
 .share a {
+    transition: .3s easa;
+    transition-property: color, fill;
     color: rgba(0, 0, 0, .44);
     fill: rgba(0, 0, 0, .44);
+}
+
+.share a:hover {
+    color: var(--main-color);
+    fill: var(--main-color);
 }
 
 .graybg {
